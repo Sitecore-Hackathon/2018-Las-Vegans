@@ -16,8 +16,8 @@ namespace LV.AirPolution.Services
         public async Task<AirQualityResponse> GetAirQuality(AirQualityRequest request)
         {
             var url = GetUrl("baqi");
-            url = AddParameter(url, "lat", request.Lat.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture));
-            url = AddParameter(url, "lon", request.Lon.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture));
+            url = AddParameter(url, "lat", request.Lat.ToString("0.00000000", System.Globalization.CultureInfo.InvariantCulture));
+            url = AddParameter(url, "lon", request.Lon.ToString("0.00000000", System.Globalization.CultureInfo.InvariantCulture));
 
             var client = new HttpClient();
             client.BaseAddress = new Uri(url);
@@ -40,8 +40,8 @@ namespace LV.AirPolution.Services
 
         private string GetUrl(string methodName)
         {
-            var apiUrl = ConfigurationManager.AppSettings["BreezoMetterApiUrl"];
-            var apiKey = ConfigurationManager.AppSettings["BreezoMetterApiKey"];
+            var apiUrl = Sitecore.Configuration.Settings.GetSetting("BreezoMetterApiUrl");
+            var apiKey = Sitecore.Configuration.Settings.GetSetting("BreezoMetterApiKey");
 
             var url = $"{apiUrl}/{methodName}";
             url = AddParameter(url, "key", apiKey);
