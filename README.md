@@ -1,9 +1,10 @@
 ﻿# Sitecore Hackathon 2018
 
 ## LasVegans Team - Poland
-### Tomasz Juranek
-### Robert Debowski
-### Wojciech Urban
+
+ - Tomasz Juranek
+ - Robert Debowski
+ - Wojciech Urban
 
 ## Category: XConnect
 
@@ -13,7 +14,7 @@ LasVegans team would like to present to you sophisticated solution to get you he
 
 What is one of the most widespread factor around the world, which is invisible, calm but in other hand extremely danger?
 
-Answer is simple: SMOG !
+Answer is simple: SMOG!
 
 Smog is a heavy air pollution which looks like mix of fog and smoke, but unfortunately it's not nature work.
 
@@ -34,7 +35,7 @@ Don't worry dear user that module is hard to use. What steps are needed to you m
 
 ![enter image description here](https://raw.githubusercontent.com/Sitecore-Hackathon/2018-Las-Vegans/ab04d8d33b4ebb2488e1541f85e18b6725cdb2df/documentation/images/email.jpg)
 
-Summary: Only step 1 has to be done by you, nothing else ! :)
+Summary: Only step 1 has to be done by you, nothing else! :)
 
 # Technical Point Of View
 
@@ -43,16 +44,22 @@ Summary: Only step 1 has to be done by you, nothing else ! :)
 To setup module you will need:
 - Sitecore 9 rev. 171219 (Update-1)
 - working xConnect service
-- module package from repository
-- json file prepared for Sitecore & xConnect to extend model
+- module package from repository (in sc.package folder)
+- json file prepared for Sitecore & xConnect to extend model (in sc.package folder)
+For details please check documentation/readme.md
 
 ## Solutions
-Our application gather user email from address using form and localization from his browser. Later those data are used by Marketing Automation to trigger external API "BreezoMeter". That API basing on given user localization check current air condition and return results to Sitecore. Then our model gets those data and put it by xConnect Custom Facet to xDB. Additionally, if value of air condition is dangerous low, Marketing Automation will send an email through EXM to warn user before this situation.
+Our application gather user email from address using form and localization from his browser. Later those data are used by Marketing Automation to trigger external API "BreezoMeter". That API based on given user localization, checks current air quality and return results to Sitecore. Then our model gets those data and put it by xConnect Custom Facet to xDB. Additionally, if value of air quality is dangerous low, Marketing Automation will send an email through EXM to warn user before about this situation.
 
 ![enter image description here](https://github.com/Sitecore-Hackathon/2018-Las-Vegans/blob/master/documentation/images/marketing_automation.png?raw=true)
+
+Module contains new condition for Sitecore Rules Engine in "XConnect - Condition" category. 
+Condition checks percentage value of air quality for contact's current location and compares to selected number between 0 and 100. Higher value means better air quality.  
+
 ![enter image description here](https://github.com/Sitecore-Hackathon/2018-Las-Vegans/blob/master/documentation/images/rule.jpg?raw=true)
+
 ## Extensions
-Our Module consists more than standard behavior presented in solution workflow above. There is also option to use custom action code, which has been already written and it's done!
+Our Module consists more than standard behavior presented in solution workflow above. There is also option to use custom action code, which has been already written:
 
 ### Marketing Automation Action
 If you would like to make more fancy stuff, just use our prepared action.
