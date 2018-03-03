@@ -1,49 +1,107 @@
 ﻿using LV.AirPolution.Facets;
+using Sitecore.Diagnostics;
 using Sitecore.XConnect;
+using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 
 namespace LV.AirPolution.Services
 {
-    public class XConnectProvider
+    public class XConnectProvider : IRegisterUser, IUpdateAirQuality
     {
-        public async void TestXConntect()
+        private const string IdSource = "web";
+
+        private const string RegisterGoalId = "{8FFB183B-DA1A-4C74-8F3A-9729E9FCFF6A}";
+
+        private const string DirectChannelId = "{B418E4F2-1013-4B42-A053-B6D4DCA988BF}";
+
+        private readonly IAirQualityService _airService;
+        
+        public XConnectProvider()
         {
-            using (Sitecore.XConnect.Client.XConnectClient client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
+            _airService = new AirQualityService();
+        }
+
+        public async void RegisterUser(string email, double latitude, double longitude)
+        {
+            using (var client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
             {
                 {
                     try
                     {
-                        Contact contact = new Contact(new ContactIdentifier("twitter", "myrtlesitecore", ContactIdentifierType.Known));
+                        Contact contact = new Contact(new ContactIdentifier(IdSource, email, ContactIdentifierType.Known));
                         client.AddContact(contact);
-
-                        // Facet with a reference object, key is specified
-                        SmogInformationFacet personalInfoFacet = new SmogInformationFacet()
-                        {
-                            SmogPercentValue = "100"
-                        };
-
-                        FacetReference reference = new FacetReference(contact, SmogInformationFacet.DefaultFacetKey);
-                        client.SetFacet(reference, personalInfoFacet);
-
-                        // Facet without a reference, using default key
-                        EmailAddressList emails = new EmailAddressList(new EmailAddress("myrtle@test.test", true), "Home");
+                        
+                        //email
+                        var emails = new EmailAddressList(new EmailAddress(email, true), "Home");
                         client.SetFacet(contact, emails);
 
-                        // Facet without a reference, key is specified
-                        AddressList addresses = new AddressList(new Address() { AddressLine1 = "Cool Street 12", City = "Sitecore City", PostalCode = "ABC 123" }, "Home");
+                        //geo location
+                        var homeAddress = new Address()
+                        {
+                            GeoCoordinate = new GeoCoordinate(latitude, longitude)
+                        };
+                        AddressList addresses = new AddressList(homeAddress, "Home");
                         client.SetFacet(contact, AddressList.DefaultFacetKey, addresses);
 
-                        // Submit operations as batch
+                        //register goal
+                        Guid channelId = Guid.Parse(DirectChannelId);
+                        string userAgent = HttpContext.Current?.Request?.UserAgent;
+                        var interaction = new Interaction(contact, InteractionInitiator.Brand, channelId, userAgent);
+                        var goal = new Goal(Guid.Parse(RegisterGoalId), DateTime.UtcNow);
+                        interaction.Events.Add(goal);
+                        client.AddInteraction(interaction);
+
                         await client.SubmitAsync();
                     }
                     catch (XdbExecutionException ex)
                     {
-
+                        Log.Error($"Error while registering a contact {email}", ex, this);
+                        throw ex;
                     }
+                }
+            }
+        }
+
+        public async void UpdateAirQualityForUser(string email)
+        {
+            using (var client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
+            {
+                try
+                {
+                    var reference = new IdentifiedContactReference(IdSource, email);
+                    var contact = client.Get<Contact>(reference, new ContactExpandOptions(AddressList.DefaultFacetKey, SmogInformationFacet.DefaultFacetKey));
+                    if (contact == null)
+                    {
+                        return;
+                    }
+
+                    var addresses = contact.GetFacet<AddressList>();
+                    var smogRequest = new Models.AirQualityRequest()
+                    {
+                        Lat = addresses.PreferredAddress.GeoCoordinate.Latitude,
+                        Lon = addresses.PreferredAddress.GeoCoordinate.Longitude
+                    };
+                    var smogResponse = await _airService.GetAirQuality(smogRequest);
+                    var smogFacet = contact.GetFacet<SmogInformationFacet>(SmogInformationFacet.DefaultFacetKey);
+                    if (smogFacet == null)
+                    {
+                        smogFacet = new SmogInformationFacet
+                        {
+                            SmogPercentValue = smogResponse?.Aqi.ToString()
+                        };
+                    }
+                    else
+                    {
+                        smogFacet.SmogPercentValue = smogResponse?.Aqi.ToString();
+                    }
+                    client.SetFacet(contact, SmogInformationFacet.DefaultFacetKey, smogFacet);
+                    client.Submit();
+                }
+                catch (XdbExecutionException ex)
+                {
+                    Log.Error($"Error while updating air pollution info for a contact {email}", ex, this);
                 }
             }
         }
