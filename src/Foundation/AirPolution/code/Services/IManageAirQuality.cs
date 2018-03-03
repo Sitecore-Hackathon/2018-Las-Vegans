@@ -7,5 +7,7 @@ namespace LV.AirPolution.Services
         int GetAirQualityForContact(Contact contact);
 
         void UpdateAirQualityForContact(Contact contact);
+
+        void UpdateAirQualityForContactsBatch(int size);
     }
 }

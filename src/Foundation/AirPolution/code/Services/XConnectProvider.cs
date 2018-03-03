@@ -5,6 +5,8 @@ using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
 using System;
 using System.Web;
+using System.Linq;
+using Sitecore.XConnect.Client.Configuration;
 
 namespace LV.AirPolution.Services
 {
@@ -25,7 +27,7 @@ namespace LV.AirPolution.Services
 
         public void RegisterUser(string email, double latitude, double longitude)
         {
-            using (var client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
+            using (var client = SitecoreXConnectClientConfiguration.GetClient())
             {
                 {
                     try
@@ -69,7 +71,7 @@ namespace LV.AirPolution.Services
 
         public int GetAirQualityForContact(Contact contact)
         {
-            using (var client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
+            using (var client = SitecoreXConnectClientConfiguration.GetClient())
             {
                 try
                 {
@@ -89,7 +91,7 @@ namespace LV.AirPolution.Services
 
         public async void UpdateAirQualityForContact(Contact contact)
         {
-            using (var client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
+            using (var client = SitecoreXConnectClientConfiguration.GetClient())
             {
                 try
                 {
@@ -124,6 +126,39 @@ namespace LV.AirPolution.Services
                 catch (XdbExecutionException ex)
                 {
                     Log.Error($"Error while updating air pollution info for a contact {contact.Id}", ex, this);
+                }
+            }
+        }
+
+        public void UpdateAirQualityForContactsBatch(int size)
+        {
+            using (var client = SitecoreXConnectClientConfiguration.GetClient())
+            {
+                try
+                {
+                    var goalId = Guid.Parse(RegisterGoalId);
+                    IAsyncQueryable<Contact> queryable = client.Contacts
+                        .Where(c => c.Interactions.Any(f => f.Events.OfType<Goal>().Any(a => a.DefinitionId == goalId)))
+                        .WithExpandOptions(new ContactExpandOptions()
+                        {
+                            Interactions = new RelatedInteractionsExpandOptions()
+                            {
+                                Limit = 10
+                            }
+                        });
+
+                    var enumerable = queryable.GetBatchEnumeratorSync(size);
+                    while (enumerable.MoveNext())
+                    {
+                        foreach (var contact in enumerable.Current)
+                        {
+                            UpdateAirQualityForContact(contact);
+                        }
+                    }
+                }
+                catch (XdbExecutionException ex)
+                {
+                    Log.Error($"Error updating air quality in batch", ex, this);
                 }
             }
         }
