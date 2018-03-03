@@ -2,7 +2,6 @@
 using Sitecore.Framework.Rules;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Segmentation.Predicates;
-using System.Diagnostics.CodeAnalysis;
 
 namespace LV.AirPolution.Rules.Conditions
 {
