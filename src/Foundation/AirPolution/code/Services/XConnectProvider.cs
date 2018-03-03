@@ -23,7 +23,7 @@ namespace LV.AirPolution.Services
             _airService = new AirQualityService();
         }
 
-        public async void RegisterUser(string email, double latitude, double longitude)
+        public void RegisterUser(string email, double latitude, double longitude)
         {
             using (var client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
             {
@@ -53,7 +53,10 @@ namespace LV.AirPolution.Services
                         interaction.Events.Add(goal);
                         client.AddInteraction(interaction);
 
-                        await client.SubmitAsync();
+                        client.Submit();
+
+                        //first load of air quality data
+                        UpdateAirQualityForContact(contact);
                     }
                     catch (XdbExecutionException ex)
                     {
