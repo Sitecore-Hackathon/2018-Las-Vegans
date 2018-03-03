@@ -140,7 +140,6 @@
     <Compile Include="Rules\Conditions\CheckPolutionCondition.cs" />
     <Compile Include="Services\AirQualityService.cs" />
     <Compile Include="Services\IAirQualityService.cs" />
-    <Compile Include="Services\SampleService.cs" />
     <Compile Include="Services\XConnectProvider.cs" />
   </ItemGroup>
   <ItemGroup />
