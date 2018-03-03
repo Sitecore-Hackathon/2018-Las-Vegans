@@ -13,7 +13,7 @@ namespace LV.AirPolution.xConnectSerialization
         static void Main(string[] args)
         {
             var model = Sitecore.XConnect.Serialization.XdbModelWriter.Serialize(XConnectSmogModel.Model);
-            File.WriteAllText(XConnectSmogModel.Model.FullName + ".json & ", model);
+            File.WriteAllText(XConnectSmogModel.Model.FullName + ".json ", model);
         }
     }
 }
