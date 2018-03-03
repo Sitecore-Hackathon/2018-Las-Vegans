@@ -1,4 +1,6 @@
-﻿namespace LV.AirPolution.Services
+﻿using System.Threading.Tasks;
+
+namespace LV.AirPolution.Services
 {
     public interface IRegisterUser
     {

@@ -127,6 +127,13 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Foundation\AirPolution\code\LV.AirPolution.csproj">
       <Project>{05e67a67-ea7c-48ef-a03a-49fc00ba7485}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\AirPolution.XConnectSerialization\LV.AirPolution.xConnectSerialization\LV.AirPolution.xConnectSerialization.csproj">
+      <Project>{176d944c-f00f-4c4d-8616-3b59e42c5d48}</Project>
+      <Name>LV.AirPolution.xConnectSerialization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Foundation\AirPolution\code\LV.AirPolution.csproj">
+      <Project>{05E67A67-EA7C-48EF-A03A-49FC00BA7485}</Project>
       <Name>LV.AirPolution</Name>
     </ProjectReference>
   </ItemGroup>
