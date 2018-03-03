@@ -2,6 +2,6 @@
 {
     public interface IRegisterUser
     {
-        RegisterUser(string email, double latitude, double longitude)
+        void RegisterUser(string email, double latitude, double longitude);
     }
 }
