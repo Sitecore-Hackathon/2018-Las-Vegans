@@ -66,7 +66,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\Foundation\AirPolution\code\LV.AirPolution.csproj">
+    <ProjectReference Include="..\..\AirPolution\code\LV.AirPolution.csproj">
       <Project>{05e67a67-ea7c-48ef-a03a-49fc00ba7485}</Project>
       <Name>LV.AirPolution</Name>
     </ProjectReference>
