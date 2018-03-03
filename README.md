@@ -26,7 +26,7 @@ To protect you against this risks we provided special module application to Site
 
 Don't worry dear user that module is hard to use. What steps are needed to you make it are:
 
-1. Register in Sitecore using our form prepared especially for this unusual Hackathon 2018 occasion.
+1. Register in Sitecore using our form prepared especially for this unusual Hackathon 2018 occasion. You should also allow your location if browser will ask for it.
 ![enter image description here](https://github.com/Sitecore-Hackathon/2018-Las-Vegans/blob/ab04d8d33b4ebb2488e1541f85e18b6725cdb2df/documentation/images/register.jpg?raw=true)
 2. Since that moment you GeoLocation data will be get and module will check quality of you air using many dedicated sensor in your area.
 ![enter image description here](https://raw.githubusercontent.com/Sitecore-Hackathon/2018-Las-Vegans/ab04d8d33b4ebb2488e1541f85e18b6725cdb2df/documentation/images/db.jpg)
@@ -42,7 +42,7 @@ Summary: Only step 1 has to be done by you, nothing else! :)
 ## Installation
 
 To setup module you will need:
-- Sitecore 9 rev. 171219 (Update-1)
+- Sitecore 9 rev. 171219 (Update-1) on https (could be IIS Express Development Certificate)
 - working xConnect service
 - module package from repository (in sc.package folder)
 - json file prepared for Sitecore & xConnect to extend model (in sc.package folder)
