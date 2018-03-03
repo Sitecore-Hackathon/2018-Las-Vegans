@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{3146197A-F400-46A8-AED9-B3E3AB70950C}"
 EndProject
@@ -39,6 +39,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AirPolution.XConnectSeriali
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LV.AirPolution.xConnectSerialization", "src\Foundation\AirPolution.XConnectSerialization\LV.AirPolution.xConnectSerialization\LV.AirPolution.xConnectSerialization.csproj", "{176D944C-F00F-4C4D-8616-3B59E42C5D48}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{AC373233-6CAF-4EC8-8C7F-5BE2802D7CBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LV.Website", "src\Project\Website\code\LV.Website.csproj", "{16284974-F038-47B3-A03F-B095402A95E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,10 @@ Global
 		{176D944C-F00F-4C4D-8616-3B59E42C5D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{176D944C-F00F-4C4D-8616-3B59E42C5D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{176D944C-F00F-4C4D-8616-3B59E42C5D48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16284974-F038-47B3-A03F-B095402A95E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16284974-F038-47B3-A03F-B095402A95E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16284974-F038-47B3-A03F-B095402A95E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16284974-F038-47B3-A03F-B095402A95E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +81,8 @@ Global
 		{F94FFD9A-1AC3-4F55-A3A5-50E41080D6B8} = {4ED94955-D96D-4574-8A40-7E4063E493C8}
 		{FABF34DF-8433-4480-91E3-7A11E85FE9BB} = {3146197A-F400-46A8-AED9-B3E3AB70950C}
 		{176D944C-F00F-4C4D-8616-3B59E42C5D48} = {FABF34DF-8433-4480-91E3-7A11E85FE9BB}
+		{AC373233-6CAF-4EC8-8C7F-5BE2802D7CBE} = {CDFC1CF5-92D9-4E00-AE80-3A2EC1EAE9F1}
+		{16284974-F038-47B3-A03F-B095402A95E0} = {AC373233-6CAF-4EC8-8C7F-5BE2802D7CBE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA3387BC-FF33-4693-BB94-72984C67B70A}
