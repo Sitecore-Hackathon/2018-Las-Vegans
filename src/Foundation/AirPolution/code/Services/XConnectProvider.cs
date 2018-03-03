@@ -72,7 +72,8 @@ namespace LV.AirPolution.Services
                 {
                     Contact existingContact = client.Get(contact, new ContactExpandOptions(SmogInformationFacet.DefaultFacetKey));
                     var smogFacet = existingContact.GetFacet<SmogInformationFacet>(SmogInformationFacet.DefaultFacetKey);
-                    int.TryParse(smogFacet.SmogPercentValue, out int airQuality);
+                    int airQuality;
+                    int.TryParse(smogFacet.SmogPercentValue, out airQuality);
                     return airQuality;
                 }
                 catch (XdbExecutionException ex)

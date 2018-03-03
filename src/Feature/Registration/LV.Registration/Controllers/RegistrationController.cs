@@ -16,11 +16,15 @@ namespace LV.Localization.Controllers
         [HttpPost]
         public void Register(string email, string lat, string lon)
         {
-            if (!double.TryParse(lat, out double latPar))
+            double latPar;
+            double lonPar;
+
+            if (!double.TryParse(lat, out latPar))
             {
                 throw new Exception("Can't parse lat parameter");
             }
-            if (!double.TryParse(lon, out double lonPar))
+
+            if (!double.TryParse(lon, out lonPar))
             {
                 throw new Exception("Can't parse lon parameter");
             }
