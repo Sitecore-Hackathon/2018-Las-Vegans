@@ -11,13 +11,7 @@ namespace LV.Localization.Controllers
         [HttpPost]
         public ActionResult Register(string email, string lat, string lon)
         {
-            return Json("");
-        }
-
-        [HttpPost]
-        public ActionResult LogOut()
-        {
-            return Json("");
+            return Json("ok");
         }
     }
 }

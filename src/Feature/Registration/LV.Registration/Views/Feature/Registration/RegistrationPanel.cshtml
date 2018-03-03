@@ -1,11 +1,23 @@
-﻿
+﻿@using Sitecore.Mvc;
 @{
     Layout = null;
 }
+
 <div class="row sign-up">
+    <br /><br /><br />
     <div class="col-md-6">
-        <p>Please sign up using your email adress. Also, don't forget obout allowing to use localization in your browser. It is important if you would like to see how it works.</p>
-        <input type="text" placeholder="Email address"/>
-        <button id="sign-up-btn">Sign up / Sign In</button>
+        <div class="row">@Html.Sitecore().Field("text", new { DisableWebEdit = true })</div>
+        <br/>
+        <div class="row">
+            <input id="email" type="text" placeholder="Email address"/>
+        </div>
+        <br />
+        <div class="row">
+            <button id="sign-up-btn">Sign up / Sign In</button>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <img src="http://www.sugcon.eu/wp-content/uploads/2017/02/sitecore-hackathon-logo.png" style="width: 250px;"/>
     </div>
 </div>
