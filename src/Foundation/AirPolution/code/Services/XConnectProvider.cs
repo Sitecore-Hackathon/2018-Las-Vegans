@@ -4,6 +4,7 @@ using Sitecore.XConnect;
 using Sitecore.XConnect.Client;
 using Sitecore.XConnect.Collection.Model;
 using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Linq;
 using Sitecore.XConnect.Client.Configuration;
@@ -89,7 +90,7 @@ namespace LV.AirPolution.Services
             }
         }
 
-        public async void UpdateAirQualityForContact(Contact contact)
+        public void UpdateAirQualityForContact(Contact contact)
         {
             using (var client = SitecoreXConnectClientConfiguration.GetClient())
             {
@@ -107,7 +108,8 @@ namespace LV.AirPolution.Services
                         Lat = addresses.PreferredAddress.GeoCoordinate.Latitude,
                         Lon = addresses.PreferredAddress.GeoCoordinate.Longitude
                     };
-                    var smogResponse = await _airService.GetAirQuality(smogRequest);
+
+                    var smogResponse = Task.Run(async () => await _airService.GetAirQuality(smogRequest)).Result;
                     var smogFacet = existingContact.GetFacet<SmogInformationFacet>(SmogInformationFacet.DefaultFacetKey);
                     if (smogFacet == null)
                     {

@@ -1,0 +1,33 @@
+{
+  "Name": "XConnectSmogModel",
+  "Version": "0.1",
+  "References": [
+    {
+      "Name": "XConnect",
+      "Version": "1.0"
+    },
+    {
+      "Name": "Sitecore.XConnect.Collection.Model",
+      "Version": "9.0"
+    }
+  ],
+  "Types": {
+    "LV.AirPolution.Facets.SmogInformationFacet": {
+      "Type": "Facet",
+      "BaseType": "Sitecore.XConnect.Facet",
+      "ClrType": "LV.AirPolution.Facets.SmogInformationFacet, LV.AirPolution, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "SmogPercentValue": {
+          "Type": "String"
+        }
+      }
+    }
+  },
+  "Facets": [
+    {
+      "Target": "Contact",
+      "Name": "SmogInformationFacet",
+      "Type": "LV.AirPolution.Facets.SmogInformationFacet"
+    }
+  ]
+}
