@@ -35,12 +35,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registratio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AirPolution.XConnectSerialization", "AirPolution.XConnectSerialization", "{FABF34DF-8433-4480-91E3-7A11E85FE9BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LV.AirPolution.xConnectSerialization", "src\Foundation\AirPolution.XConnectSerialization\LV.AirPolution.xConnectSerialization\LV.AirPolution.xConnectSerialization.csproj", "{176D944C-F00F-4C4D-8616-3B59E42C5D48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LV.AirPolution.xConnectSerialization", "src\Foundation\AirPolution.XConnectSerialization\code\LV.AirPolution.xConnectSerialization.csproj", "{176D944C-F00F-4C4D-8616-3B59E42C5D48}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{AC373233-6CAF-4EC8-8C7F-5BE2802D7CBE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LV.Website", "src\Project\Website\code\LV.Website.csproj", "{16284974-F038-47B3-A03F-B095402A95E0}"
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LV.Registration", "src\Feature\Registration\LV.Registration\LV.Registration.csproj", "{F94FFD9A-1AC3-4F55-A3A5-50E41080D6B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LV.Registration", "src\Feature\Registration\code\LV.Registration.csproj", "{F94FFD9A-1AC3-4F55-A3A5-50E41080D6B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

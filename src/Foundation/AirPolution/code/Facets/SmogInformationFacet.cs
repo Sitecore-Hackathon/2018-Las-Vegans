@@ -1,11 +1,11 @@
 ﻿using Sitecore.XConnect;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace LV.AirPolution.Facets
 {
+    /// <summary>
+    /// Custom Facet for storing air quality data
+    /// </summary>
     [Serializable]
     [FacetKey(DefaultFacetKey)]
     public class SmogInformationFacet : Facet
@@ -17,6 +17,9 @@ namespace LV.AirPolution.Facets
 
         }
 
+        /// <summary>
+        /// Air quality percentage value, greater the better
+        /// </summary>
         public string SmogPercentValue { get; set; }
     }
 }

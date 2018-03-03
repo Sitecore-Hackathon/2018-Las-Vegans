@@ -165,7 +165,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="App_Config\Include\AirPolution\AirPolutionCustomConfig.config">
+    <Content Include="App_Config\Include\AirPolution\AirPolution.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>

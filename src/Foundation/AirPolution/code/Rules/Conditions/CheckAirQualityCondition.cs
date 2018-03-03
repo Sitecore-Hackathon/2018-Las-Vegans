@@ -1,10 +1,15 @@
 ﻿using LV.AirPolution.Services;
+using Sitecore;
 using Sitecore.Framework.Rules;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Segmentation.Predicates;
 
 namespace LV.AirPolution.Rules.Conditions
 {
+    /// <summary>
+    /// Air quality checking rule, used by Sitecore rules engine
+    /// </summary>
+    [UsedImplicitly]
     public class CheckAirQualityCondition : ICondition, IMappableRuleEntity
     {
         public int AirQuality { get; set; }
