@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{3146197A-F400-46A8-AED9-B3E3AB70950C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AirPolution", "AirPolution", "{7F4FDB2E-0884-4D6F-AC7D-3A631B37F9B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LV.AirPolution", "src\Foundation\AirPolution\code\LV.AirPolution.csproj", "{05E67A67-EA7C-48EF-A03A-49FC00BA7485}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{3BC99886-8178-417D-B159-8DB8BF666866}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LV.AirPolution.Tests", "src\Foundation\AirPolution\tests\LV.AirPolution.Tests.csproj", "{37AF6189-E0B4-4B89-8733-66A4D078F9CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{8BE43047-99C5-4F76-AB43-C8EEEF9C7972}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{CDFC1CF5-92D9-4E00-AE80-3A2EC1EAE9F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{9DEEAC51-91A7-4CC9-A872-EAFA8DC6BA23}"
+	ProjectSection(SolutionItems) = preProject
+		documentation\images\deal-with-it.gif = documentation\images\deal-with-it.gif
+		documentation\images\hackathon.png = documentation\images\hackathon.png
+		documentation\README.md = documentation\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05E67A67-EA7C-48EF-A03A-49FC00BA7485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05E67A67-EA7C-48EF-A03A-49FC00BA7485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05E67A67-EA7C-48EF-A03A-49FC00BA7485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05E67A67-EA7C-48EF-A03A-49FC00BA7485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37AF6189-E0B4-4B89-8733-66A4D078F9CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37AF6189-E0B4-4B89-8733-66A4D078F9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37AF6189-E0B4-4B89-8733-66A4D078F9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37AF6189-E0B4-4B89-8733-66A4D078F9CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F4FDB2E-0884-4D6F-AC7D-3A631B37F9B5} = {3146197A-F400-46A8-AED9-B3E3AB70950C}
+		{05E67A67-EA7C-48EF-A03A-49FC00BA7485} = {7F4FDB2E-0884-4D6F-AC7D-3A631B37F9B5}
+		{37AF6189-E0B4-4B89-8733-66A4D078F9CE} = {7F4FDB2E-0884-4D6F-AC7D-3A631B37F9B5}
+	EndGlobalSection
+EndGlobal
