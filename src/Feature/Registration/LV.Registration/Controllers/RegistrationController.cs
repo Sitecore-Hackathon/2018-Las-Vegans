@@ -1,33 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using LV.AirPolution.Services;
 
 namespace LV.Localization.Controllers
 {
     public class RegistrationController : Controller
-    { 
+    {
+        private readonly IRegisterUser _userService;
+
+        public RegistrationController()
+        {
+            _userService = new XConnectProvider();
+        }
+
         [HttpPost]
         public void Register(string email, string lat, string lon)
         {
-            var xConnectProvider = new XConnectProvider();
-
-            double latPar;
-            double lonPar;
-            
-            if(!double.TryParse(lat, out latPar))
+            if (!double.TryParse(lat, out double latPar))
             {
                 throw new Exception("Can't parse lat parameter");
             }
-
-            if (!double.TryParse(lon, out lonPar))
+            if (!double.TryParse(lon, out double lonPar))
             {
                 throw new Exception("Can't parse lon parameter");
             }
-
-            xConnectProvider.RegisterUser(email, latPar, lonPar);
+            _userService.RegisterUser(email, latPar, lonPar);
         }
     }
 }

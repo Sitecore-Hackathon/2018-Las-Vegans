@@ -8,7 +8,7 @@ using System.Web;
 
 namespace LV.AirPolution.Services
 {
-    public class XConnectProvider : IRegisterUser, IUpdateAirQuality
+    public class XConnectProvider : IRegisterUser, IManageAirQuality
     {
         private const string IdSource = "web";
 
@@ -64,15 +64,33 @@ namespace LV.AirPolution.Services
             }
         }
 
-        public async void UpdateAirQualityForUser(string email)
+        public int GetAirQualityForContact(Contact contact)
         {
             using (var client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
             {
                 try
                 {
-                    var reference = new IdentifiedContactReference(IdSource, email);
-                    var contact = client.Get<Contact>(reference, new ContactExpandOptions(AddressList.DefaultFacetKey, SmogInformationFacet.DefaultFacetKey));
-                    if (contact == null)
+                    Contact existingContact = client.Get(contact, new ContactExpandOptions(SmogInformationFacet.DefaultFacetKey));
+                    var smogFacet = existingContact.GetFacet<SmogInformationFacet>(SmogInformationFacet.DefaultFacetKey);
+                    int.TryParse(smogFacet.SmogPercentValue, out int airQuality);
+                    return airQuality;
+                }
+                catch (XdbExecutionException ex)
+                {
+                    Log.Error($"Error while reading air pollution info for a contact {contact.Id}", ex, this);
+                    throw ex;
+                }
+            }
+        }
+
+        public async void UpdateAirQualityForContact(Contact contact)
+        {
+            using (var client = Sitecore.XConnect.Client.Configuration.SitecoreXConnectClientConfiguration.GetClient())
+            {
+                try
+                {
+                    var existingContact = client.Get(contact, new ContactExpandOptions(AddressList.DefaultFacetKey, SmogInformationFacet.DefaultFacetKey));
+                    if (existingContact == null)
                     {
                         return;
                     }
@@ -84,7 +102,7 @@ namespace LV.AirPolution.Services
                         Lon = addresses.PreferredAddress.GeoCoordinate.Longitude
                     };
                     var smogResponse = await _airService.GetAirQuality(smogRequest);
-                    var smogFacet = contact.GetFacet<SmogInformationFacet>(SmogInformationFacet.DefaultFacetKey);
+                    var smogFacet = existingContact.GetFacet<SmogInformationFacet>(SmogInformationFacet.DefaultFacetKey);
                     if (smogFacet == null)
                     {
                         smogFacet = new SmogInformationFacet
@@ -96,12 +114,12 @@ namespace LV.AirPolution.Services
                     {
                         smogFacet.SmogPercentValue = smogResponse?.Aqi.ToString();
                     }
-                    client.SetFacet(contact, SmogInformationFacet.DefaultFacetKey, smogFacet);
+                    client.SetFacet(existingContact, SmogInformationFacet.DefaultFacetKey, smogFacet);
                     client.Submit();
                 }
                 catch (XdbExecutionException ex)
                 {
-                    Log.Error($"Error while updating air pollution info for a contact {email}", ex, this);
+                    Log.Error($"Error while updating air pollution info for a contact {contact.Id}", ex, this);
                 }
             }
         }

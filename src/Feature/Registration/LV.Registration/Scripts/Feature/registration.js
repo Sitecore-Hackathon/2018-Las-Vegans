@@ -50,20 +50,6 @@
                 alert("The following error occurred: " + textStatus);
                 console.log(errorThrown);
             });
-
-
-            //$.ajax({
-            //    type: "POST",
-            //    url: "/api/sitecore/registration/register",
-            //    data: {
-            //        email: email,
-            //        lat: crd.latitude,
-            //        lon:crd.longitude
-            //    },
-            //    success: function() {
-            //        alert("Contact signed up successfully");
-            //    },
-            //});
         };
 
         function error(err) {
