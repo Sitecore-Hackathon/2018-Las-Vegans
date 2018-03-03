@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Globalization;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using LV.AirPolution.Services;
 
 namespace LV.Localization.Controllers
 {
+    /// <summary>
+    /// User registration controller with basic geolocation data
+    /// </summary>
     public class RegistrationController : Controller
     {
         private readonly IRegisterUser _userService;

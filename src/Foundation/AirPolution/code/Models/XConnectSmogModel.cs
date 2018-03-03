@@ -1,13 +1,12 @@
 ﻿using LV.AirPolution.Facets;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Schema;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace LV.AirPolution.Models
 {
+    /// <summary>
+    /// xConnect model for air quality facet
+    /// </summary>
     public class XConnectSmogModel
     {
         public static XdbModel Model { get; } = BuildModel();
