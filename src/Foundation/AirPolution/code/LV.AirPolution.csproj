@@ -58,6 +58,9 @@
     <Reference Include="Sitecore.Framework.Rules.Abstractions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Sitecore.Framework.Rules.Abstractions.1.1.28\lib\net462\Sitecore.Framework.Rules.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Sitecore.Kernel.NoReferences.9.0.171219\lib\NET462\Sitecore.Kernel.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.XConnect, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Sitecore.XConnect.NoReferences.9.0.171219\lib\NET462\Sitecore.XConnect.dll</HintPath>
     </Reference>
@@ -140,13 +143,15 @@
     <Compile Include="Rules\Conditions\CheckPolutionCondition.cs" />
     <Compile Include="Services\AirQualityService.cs" />
     <Compile Include="Services\IAirQualityService.cs" />
+    <Compile Include="Services\IUpdateAirQuality.cs" />
+    <Compile Include="Services\IRegisterUser.cs" />
     <Compile Include="Services\XConnectProvider.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="App_Config\Include\AirPolution\AirPolutionCustomConfig.config">
+    <Content Include="App_Config\Include\AirPolution\AirPolutionCustomConfig.config">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
