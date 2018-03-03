@@ -30,7 +30,7 @@ namespace LV.AirPolution.Services
                 {
                     try
                     {
-                        Contact contact = new Contact(new ContactIdentifier(IdSource, email, ContactIdentifierType.Known));
+                        var contact = new Contact(new ContactIdentifier(IdSource, email, ContactIdentifierType.Known));
                         client.AddContact(contact);
                         
                         //email
