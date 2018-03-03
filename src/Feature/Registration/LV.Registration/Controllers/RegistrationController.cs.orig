@@ -14,15 +14,15 @@ namespace LV.Registration.Controllers
         {
             return Json("");
         }
+<<<<<<< HEAD
 
         [HttpGet]
-        public EmptyResult XConnectTest()
+        public ActionResult XConnectTest()
         {
             XConnectProvider xConnectProvider = new XConnectProvider();
             xConnectProvider.TestXConntect();
-
-            return new EmptyResult();
-        }
+=======
+>>>>>>> master
 
         [HttpPost]
         public ActionResult LogOut()
