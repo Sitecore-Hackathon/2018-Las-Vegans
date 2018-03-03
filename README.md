@@ -44,8 +44,9 @@ Summary: Only step 1 has to be done by you, nothing else! :)
 To setup module you will need:
 - Sitecore 9 rev. 171219 (Update-1) on https (could be IIS Express Development Certificate)
 - working xConnect service
-- module package from repository (in sc.package folder)
-- json file prepared for Sitecore & xConnect to extend model (in sc.package folder)
+- module package from repository in [sc.package](sc.package)
+- json file prepared for Sitecore & xConnect to extend model in [sc.package](sc.package)
+
 For details check [guide](documentation/README.md)
 
 ## Solutions
