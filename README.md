@@ -46,7 +46,7 @@ To setup module you will need:
 - working xConnect service
 - module package from repository (in sc.package folder)
 - json file prepared for Sitecore & xConnect to extend model (in sc.package folder)
-For details please check documentation/readme.md
+For details check [guide](documentation/README.md)
 
 ## Solutions
 Our application gather user email from address using form and localization from his browser. Later those data are used by Marketing Automation to trigger external API "BreezoMeter". That API based on given user localization, checks current air quality and return results to Sitecore. Then our model gets those data and put it by xConnect Custom Facet to xDB. Additionally, if value of air quality is dangerous low, Marketing Automation will send an email through EXM to warn user before about this situation.
