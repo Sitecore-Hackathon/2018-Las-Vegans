@@ -1,71 +1,12 @@
-# Documentation
+## Installation Steps
 
-The documentation for this years Hackathon must be provided as a readme in Markdown format as part of your submission. 
-
-You can find a very good reference to Github flavoured markdown reference in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). If you want something a bit more WYSIWYG for editing then could use [StackEdit](https://stackedit.io/app) which provides a more user friendly interface for generating the Markdown code. Those of you who are [VS Code fans](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) can edit/preview directly in that interface too.
-
-Examples of things to include are the following.
-
-## Summary
-
-**Category:** Hackathon Category
-
-What is the purpose of your module? What problem does it solve and how does it do that?
-
-## Pre-requisites
-
-Does your module rely on other Sitecore modules or frameworks?
-
-- List any dependencies
-- Or other modules that must be installed
-- Or services that must be enabled/configured
-
-## Installation
-
-Provide detailed instructions on how to install the module, and include screenshots where necessary.
-
-1. Use the Sitecore Installation wizard to install the [package](#link-to-package)
-2. ???
-3. Profit
-
-## Configuration
-
-How do you configure your module once it is installed? Are there items that need to be updated with settings, or maybe config files need to have keys updated?
-
-Remember you are using Markdown, you can provide code samples too:
-
-```xml
-<?xml version="1.0"?>
-<!--
-  Purpose: Configuration settings for my hackathon module
--->
-<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
-  <sitecore>
-    <settings>
-      <setting name="MyModule.Setting" value="Hackathon" />
-    </settings>
-  </sitecore>
-</configuration>
-```
-
-## Usage
-
-Provide documentation  about your module, how do the users use your module, where are things located, what do icons mean, are there any secret shortcuts etc.
-
-Please include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
-
-![Hackathon Logo](images/hackathon.png?raw=true "Hackathon Logo")
-
-You can embed images of different formats too:
-
-![Deal With It](images/deal-with-it.gif?raw=true "Deal With It")
-
-And you can embed external images too:
-
-![Random](https://placeimg.com/480/240/any "Random")
-
-## Video
-
-Please provide a video highlighing your Hackathon module submission and provide a link to the video. Either a [direct link](https://www.youtube.com/watch?v=EpNhxW4pNKk) to the video, upload it to this documentation folder or maybe upload it to Youtube...
-
-[![Sitecore Hackathon Video Embedding Alt Text](https://img.youtube.com/vi/EpNhxW4pNKk/0.jpg)](https://www.youtube.com/watch?v=EpNhxW4pNKk)
+1.	To get correct installation of Air Pollution module on your instance of Sitecore you should have installed **Sitecore Experience Platform 9.0 rev. 171219 (9.0 Update-1)**.
+2.	On github repository in **sc.package** directory is [package](2018-Las-Vegans/sc.package/AirPollution-LasVegans-Hackathon-2018-1.0.0.zip) which has to be installed on Sitecore instance. In case of any conflicts, please choose **Overwrite** option and continue.
+3.	After successfully installation of package, please publish installed items or whole site.
+4.	In **AirPolutionCustomConfig.config** some settings responsible for external API are placed. Most important is **BreezoMetterApiKey**. To hackaton purposes we’ve used trial version which will expire in a month. If verification process will be made after **3.04.2018**, please sign up and generate new token here https://developers.breezometer.com/login.
+5.	**!!Please configure your Sitecore instance to use HTTPS and use it during exploring website.!!** It is required by localization services.
+6.	Setup for Sitecore instance is done. Now there is a need to add some things to **xConnect** instance. Please make sure that your xConnect instance is turned on and works well.
+7.	Go to **sc.pakage** directory on repository and copy [XConnectSmogModel, 0.1.json](2018-Las-Vegans/sc.package/XConnectSmogModel,%200.1.json) file to following directories:
+	-	xConnect-web-root/App_Data/Models
+	- xConnect-web-root/App_data/jobs/continuous/IndexWorker/App_data/Models
+8. Enjoy the module!
