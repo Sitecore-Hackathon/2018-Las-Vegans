@@ -9,6 +9,6 @@
 7.	Go to **sc.pakage** directory on repository and copy [XConnectSmogModel, 0.1.json](../sc.package/XConnectSmogModel,%200.1.json) file to following directories:
 	-	xConnect-web-root/App_Data/Models
 	- xConnect-web-root/App_data/jobs/continuous/IndexWorker/App_data/Models
-8. Copy LV.AirPolution.dll from Sitecore bin folder to the Marketing Automation engine
+8. Copy LV.AirPolution.dll from Sitecore bin folder to the Marketing Automation engine (should be in C:\path\to\xconnect\App_data\jobs\continuous\AutomationEngine)
 9. Go to **sc.pakage** directory on repository and copy [CheckAirQualityCondition.config](../sc.package/CheckAirQualityCondition.config) to C:\path\to\xconnect\App_data\jobs\continuous\AutomationEngine\App_Data\Config\sitecore\Segmentation  
 10. Enjoy the module!
