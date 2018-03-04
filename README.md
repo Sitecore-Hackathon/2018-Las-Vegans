@@ -46,7 +46,7 @@ To setup module you will need:
 - working xConnect service
 - module package from repository in [sc.package](sc.package)
 - json file prepared for Sitecore & xConnect to extend model in [sc.package](sc.package)
-- add condition config and LV.LV.AirPolution.dll to Marketing Automation in [sc.package](sc.package)
+- add condition config and LV.AirPolution.dll to Marketing Automation in [sc.package](sc.package)
 
 For details check [guide](documentation/README.md)
 
